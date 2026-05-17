@@ -16,45 +16,19 @@ html{scroll-behavior:smooth;}
 body{font-family:'Jost',sans-serif;background:var(--ivory);color:var(--char);overflow-x:hidden;}
 
 /* ── ELEGANT CURSOR ── */
-body { cursor: none; }
-
-#cur-dot {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width .25s, height .25s, background .25s;
-  box-shadow: 0 0 8px rgba(201,168,76,.6);
+@media (hover:hover) and (pointer:fine){
+  body{cursor:none;}
+  a,button,label,select,[onclick],[role="button"]{cursor:none;}
+  input,textarea{cursor:text;}
+  #cur-dot,#cur-ring{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;will-change:transform,width,height;}
+  #cur-dot{width:6px;height:6px;background:var(--gold);box-shadow:0 0 10px rgba(201,168,76,.55);z-index:9999;transition:width .22s ease,height .22s ease,opacity .22s ease,background .22s ease;}
+  #cur-ring{width:32px;height:32px;border:1.2px solid rgba(201,168,76,.5);background:transparent;z-index:9998;transition:width .32s cubic-bezier(.22,.61,.36,1),height .32s cubic-bezier(.22,.61,.36,1),border-color .25s ease,background .25s ease,opacity .25s ease;}
+  body.cur-hover #cur-dot{width:0;height:0;opacity:0;}
+  body.cur-hover #cur-ring{width:54px;height:54px;border-color:rgba(201,168,76,.85);background:rgba(201,168,76,.07);}
+  body.cur-down #cur-ring{width:22px;height:22px;border-color:rgba(201,168,76,1);}
+  body.cur-hidden #cur-dot,body.cur-hidden #cur-ring{opacity:0;}
 }
-
-#cur-ring {
-  position: fixed;
-  width: 34px; height: 34px;
-  border: 1.5px solid rgba(201,168,76, .55);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width .35s cubic-bezier(.25,.1,.25,1),
-              height .35s cubic-bezier(.25,.1,.25,1),
-              border-color .25s, opacity .25s;
-}
-
-body.cur-hover #cur-dot {
-  width: 48px; height: 48px;
-  background: rgba(201,168,76,.12);
-  box-shadow: 0 0 20px rgba(201,168,76,.2);
-}
-body.cur-hover #cur-ring {
-  width: 52px; height: 52px;
-  border-color: rgba(201,168,76,.8);
-  opacity: 0;
-}
-
-#sparkle-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 9997; }
+@media (hover:none),(pointer:coarse){#cur-dot,#cur-ring{display:none;}}
 
 /* ── PROGRESS BAR ── */
 #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:1000;width:0%;transition:width .1s linear;box-shadow:0 0 8px rgba(201,168,76,.6);}
@@ -277,7 +251,6 @@ footer span{color:var(--gold);}
 </head>
 <body>
 
-<canvas id="sparkle-canvas"></canvas>
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 
@@ -675,78 +648,31 @@ footer span{color:var(--gold);}
 
 <script>
 /* ── ELEGANT CURSOR ── */
-const sparkCanvas = document.getElementById('sparkle-canvas');
-const sCtx = sparkCanvas.getContext('2d');
-sparkCanvas.width = window.innerWidth;
-sparkCanvas.height = window.innerHeight;
-window.addEventListener('resize',()=>{ sparkCanvas.width=window.innerWidth; sparkCanvas.height=window.innerHeight; });
-
-const curDot  = document.getElementById('cur-dot');
-const curRing = document.getElementById('cur-ring');
-let mx=0, my=0, rx=0, ry=0;
-let sparkles = [];
-
-const COLOURS=['#c9a84c','#e0c57a','#f5eed8','#d4b870','#e8d5a0'];
-
-class Sparkle{
-  constructor(x,y){
-    this.x=x+(Math.random()-0.5)*6;
-    this.y=y+(Math.random()-0.5)*6;
-    this.size=Math.random()*2.5+1;
-    this.colour=COLOURS[Math.floor(Math.random()*COLOURS.length)];
-    this.vx=(Math.random()-0.5)*0.8;
-    this.vy=(Math.random()-0.5)*0.8-0.5;
-    this.alpha=0.7;
-    this.decay=Math.random()*0.018+0.012;
-  }
-  update(){
-    this.x+=this.vx;
-    this.y+=this.vy;
-    this.vy+=0.015;
-    this.alpha-=this.decay;
-    this.size*=0.98;
-  }
-  draw(ctx){
-    if(this.alpha<=0)return;
-    ctx.save();
-    ctx.globalAlpha=this.alpha;
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fillStyle=this.colour;
-    ctx.shadowColor=this.colour;
-    ctx.shadowBlur=4;
-    ctx.fill();
-    ctx.restore();
-  }
-}
-
-let lastSparkleTime=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX; my=e.clientY;
-  curDot.style.left  = mx + 'px';
-  curDot.style.top   = my + 'px';
-  const now=Date.now();
-  if(now-lastSparkleTime>18){
-    lastSparkleTime=now;
-    for(let i=0;i<3;i++) sparkles.push(new Sparkle(mx,my));
-  }
-});
-
-
-
-(function animRing(){
-  rx += (mx - rx) * 0.1;
-  ry += (my - ry) * 0.1;
-  curRing.style.left = rx + 'px';
-  curRing.style.top  = ry + 'px';
-  requestAnimationFrame(animRing);
-})();
-
-(function animSparkles(){
-  sCtx.clearRect(0,0,sparkCanvas.width,sparkCanvas.height);
-  sparkles=sparkles.filter(s=>s.alpha>0);
-  sparkles.forEach(s=>{s.update();s.draw(sCtx);});
-  requestAnimationFrame(animSparkles);
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const dot=document.getElementById('cur-dot'), ring=document.getElementById('cur-ring');
+  if(!dot||!ring) return;
+  let mx=innerWidth/2, my=innerHeight/2, rx=mx, ry=my;
+  addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  },{passive:true});
+  (function loop(){
+    rx+=(mx-rx)*0.18; ry+=(my-ry)*0.18;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  const hoverSel='a,button,label,select,[onclick],[role="button"],.magnetic,.symptom-chip,.ftab,.acc-trigger,.treat-card,.cal-cell.weekend-day,.time-btn,.nav-logo,.acc-book-btn';
+  document.addEventListener('mouseover',e=>{ if(e.target.closest&&e.target.closest(hoverSel)) document.body.classList.add('cur-hover'); });
+  document.addEventListener('mouseout', e=>{ if(e.target.closest&&e.target.closest(hoverSel)) document.body.classList.remove('cur-hover'); });
+  document.addEventListener('mousedown',()=>document.body.classList.add('cur-down'));
+  document.addEventListener('mouseup',  ()=>document.body.classList.remove('cur-down'));
+  document.documentElement.addEventListener('mouseleave',()=>document.body.classList.add('cur-hidden'));
+  document.documentElement.addEventListener('mouseenter',()=>document.body.classList.remove('cur-hidden'));
+  document.querySelectorAll('iframe').forEach(f=>{
+    f.addEventListener('mouseenter',()=>document.body.classList.add('cur-hidden'));
+    f.addEventListener('mouseleave',()=>document.body.classList.remove('cur-hidden'));
+  });
 })();
 
 
