@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benefits of Lymphatic Drainage | Heavenly Hideaway — Lisa Gaffey</title>
+<title>Treatment Guide to Lymphatic Drainage | Heavenly Hideaway — Lisa Gaffey</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -171,27 +171,18 @@ canvas#particles{position:absolute;inset:0;pointer-events:none;}
 .acc-book-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;background:var(--gold);color:#fff;text-decoration:none;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:.7rem 1.4rem;border-radius:2rem;transition:all .2s;cursor:pointer;}
 .acc-book-btn:hover{background:var(--gold-l);}
 
-/* ── BODY MAP ── */
-.bodymap-section{padding:7rem 4rem;background:var(--cream);position:relative;overflow:hidden;}
-.bodymap-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.bodymap-wrap{position:relative;display:flex;justify-content:center;}
-.body-svg{width:260px;filter:drop-shadow(0 20px 40px rgba(201,168,76,.15));}
-.hotspot{position:absolute;cursor:pointer;}
-.hotspot-dot{width:20px;height:20px;border-radius:50%;background:var(--gold);border:3px solid #fff;box-shadow:0 2px 8px rgba(201,168,76,.4);transition:all .2s;animation:hotpulse 2s ease-in-out infinite;}
-.hotspot:hover .hotspot-dot{transform:scale(1.4);box-shadow:0 4px 16px rgba(201,168,76,.6);}
-@keyframes hotpulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.5);}50%{box-shadow:0 0 0 8px rgba(201,168,76,0);}}
-.hotspot-label{position:absolute;left:26px;top:50%;transform:translateY(-50%);white-space:nowrap;background:#fff;border:1px solid rgba(201,168,76,.3);padding:.3rem .8rem;border-radius:2rem;font-size:.72rem;font-weight:500;color:var(--dark);opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 4px 12px rgba(0,0,0,.06);}
-.hotspot:hover .hotspot-label{opacity:1;}
-.bodymap-info{min-height:300px;}
-.bodymap-default{display:block;}
-.bodymap-detail{display:none;}
-.bodymap-detail.active{display:block;animation:fadeUp .4s ease;}
-.bm-icon{font-size:2.5rem;margin-bottom:1rem;}
-.bm-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--dark);margin-bottom:.8rem;line-height:1.2;}
-.bm-title em{font-style:italic;color:var(--gold);}
-.bm-text{font-size:.92rem;color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:1.4rem;}
-.bm-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
-.bm-chip{background:#fff;border:1px solid rgba(201,168,76,.25);color:var(--dark);font-size:.72rem;padding:.35rem .85rem;border-radius:2rem;font-weight:500;}
+/* ── 3D EXPLORER BANNER ── */
+.explorer-banner{background:linear-gradient(140deg,var(--dark) 0%,#3a3220 100%);padding:4.5rem 4rem;position:relative;overflow:hidden;}
+.explorer-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.15) 0%,transparent 60%);pointer-events:none;}
+.explorer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;position:relative;z-index:1;}
+.explorer-eyebrow{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;}
+.explorer-eyebrow::before{content:'';width:2rem;height:1px;background:var(--gold);}
+.explorer-eyebrow span{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.explorer-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:300;color:#fff;line-height:1.2;}
+.explorer-h em{font-style:italic;color:var(--gold-l);}
+.explorer-p{font-size:.85rem;color:rgba(255,255,255,.55);font-weight:300;margin-top:.7rem;line-height:1.7;max-width:520px;}
+.explorer-btn{background:var(--gold);color:#fff;text-decoration:none;padding:1.05rem 2.2rem;border-radius:3rem;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;box-shadow:0 8px 24px rgba(201,168,76,.4);transition:all .3s;}
+.explorer-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
 
 /* ── TESTIMONIAL TICKER ── */
 .ticker-section{background:var(--dark);padding:2.5rem 0;overflow:hidden;}
@@ -242,12 +233,13 @@ footer span{color:var(--gold);}
   .nav-links{display:none;}
   .hero{padding:8rem 2rem 4rem;}
   .stats-strip{grid-template-columns:repeat(2,1fr);padding:2.5rem 2rem;}
-  .quiz-section,.acc-section,.bodymap-section,.bottom-cta{padding:5rem 2rem;}
+  .quiz-section,.acc-section,.bottom-cta{padding:5rem 2rem;}
+  .explorer-banner{padding:3.5rem 2rem;}
+  .explorer-inner{grid-template-columns:1fr;gap:1.6rem;text-align:left;}
+  .explorer-btn{justify-self:start;}
   .symptom-grid{grid-template-columns:repeat(2,1fr);}
   .result-cards{grid-template-columns:1fr;}
   .acc-content{grid-template-columns:1fr;gap:1.5rem;padding-left:0;}
-  .bodymap-inner{grid-template-columns:1fr;gap:3rem;}
-  .body-svg{width:200px;}
   #float-book{right:1rem;bottom:1rem;}
 }
 </style>
@@ -284,7 +276,7 @@ footer span{color:var(--gold);}
   <div class="hero-inner">
     <a href="index.html" class="back-link magnetic">← Back to Heavenly Hideaway</a>
     <div class="eyebrow"><span>Evidence-Informed Therapy · Cheshire</span></div>
-    <h1>The Complete Guide to<br><em class="shimmer">Lymphatic Drainage</em><br>Benefits</h1>
+    <h1>Your Complete<br><em class="shimmer">Treatment Guide</em><br>to Lymphatic Drainage</h1>
     <p class="hero-sub">Discover the science behind each benefit, find the treatments most relevant to you, and understand why clients call their first MLD session "life-changing."</p>
   </div>
 </section>
@@ -378,496 +370,17 @@ footer span{color:var(--gold);}
   </div>
 </section>
 
-<!-- BODY MAP -->
-<!-- 3D MAP LINK BANNER -->
-<div style="background:var(--warm-dark);padding:2rem 2rem;text-align:center;border-bottom:1px solid rgba(201,168,76,.15);">
-  <div style="max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-    <div style="text-align:left;">
-      <p style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.3rem;">New Feature</p>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#fff;line-height:1.2;">Interactive 3D Lymphatic System <em style="font-style:italic;color:var(--gold);">Explorer</em></h3>
-      <p style="font-size:.78rem;color:rgba(255,255,255,.45);font-weight:300;margin-top:.3rem;">Rotate, zoom and explore the full lymphatic system in 3D</p>
+<!-- 3D EXPLORER BANNER -->
+<section class="explorer-banner reveal">
+  <div class="explorer-inner">
+    <div>
+      <div class="explorer-eyebrow"><span>Interactive Lymphatic System</span></div>
+      <h2 class="explorer-h">Explore the Full System in <em>Stunning 3D</em></h2>
+      <p class="explorer-p">Rotate, zoom and discover every node and vessel — the same network Lisa works with in every session.</p>
     </div>
-    <a href="lymphatic-map.html" style="background:var(--gold);color:#fff;text-decoration:none;padding:.85rem 2rem;border-radius:3rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;box-shadow:0 6px 20px rgba(201,168,76,.3);">Explore in 3D &rarr;</a>
-  </div>
-</div>
-
-<section style="padding:4rem 1.5rem;background:#0d1028;overflow:hidden;">
-  <div style="max-width:1000px;margin:0 auto;">
-
-    <div class="reveal" style="margin-bottom:2rem;">
-      <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;">
-        <div style="width:2rem;height:1px;background:#c9a84c;"></div>
-        <span style="font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a84c;font-weight:500;">Interactive Lymphatic System</span>
-      </div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,5vw,3.2rem);font-weight:300;color:#fff;line-height:1.15;">
-        Press &amp; Drag to <em style="font-style:italic;color:#c9a84c;">Move Lymph Fluid</em>
-      </h2>
-      <p style="color:rgba(255,255,255,.45);font-size:.88rem;font-weight:300;line-height:1.85;max-width:500px;margin-top:.7rem;">
-        Place your finger on the body and drag — fluid spreads away from your touch and flows toward the nearest lymph nodes, exactly as MLD does.
-      </p>
-    </div>
-
-    <!-- CANVAS — full width, stacks on mobile -->
-    <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
-      <div id="lymph-container" style="width:100%;max-width:360px;position:relative;">
-        <canvas id="lymph-canvas" style="display:block;width:100%;touch-action:none;cursor:crosshair;border-radius:1rem;box-shadow:0 0 40px rgba(201,168,76,.1);"></canvas>
-        <div id="lymph-hint" style="position:absolute;bottom:.8rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:rgba(255,255,255,.7);font-size:.7rem;letter-spacing:.1em;padding:.45rem 1.1rem;border-radius:2rem;pointer-events:none;white-space:nowrap;transition:opacity .8s;">
-          ✦ Press and drag to push lymph fluid
-        </div>
-      </div>
-
-      <!-- INFO BOX below canvas on mobile -->
-      <div id="lymph-info-box" style="width:100%;max-width:360px;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);border-radius:1.2rem;padding:1.5rem;transition:all .35s;">
-        <p style="font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#c9a84c;font-weight:500;margin-bottom:.6rem;" id="lymph-area-label">Touch the body to explore</p>
-        <h3 id="lymph-info-title" style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:#fff;margin-bottom:.5rem;line-height:1.25;">The Lymphatic Network</h3>
-        <p id="lymph-info-text" style="font-size:.82rem;color:rgba(255,255,255,.5);font-weight:300;line-height:1.75;">Press anywhere on the body above to see what MLD does in that region and why it matters for your health.</p>
-      </div>
-
-      <!-- Legend -->
-      <div style="width:100%;max-width:360px;display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
-        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.9rem;padding:1rem;">
-          <p style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin-bottom:.7rem;">Vessels</p>
-          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;"><div style="width:22px;height:2.5px;background:#c9a84c;border-radius:2px;flex-shrink:0;"></div><span style="font-size:.74rem;color:rgba(255,255,255,.55);">Thoracic duct</span></div>
-          <div style="display:flex;align-items:center;gap:.6rem;"><div style="width:22px;height:1px;background:rgba(201,168,76,.45);border-radius:2px;flex-shrink:0;"></div><span style="font-size:.74rem;color:rgba(255,255,255,.55);">Lymph vessels</span></div>
-        </div>
-        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.9rem;padding:1rem;">
-          <p style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin-bottom:.7rem;">Markers</p>
-          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;"><div style="width:10px;height:10px;border-radius:50%;background:rgba(240,235,220,.9);box-shadow:0 0 6px rgba(201,168,76,.5);flex-shrink:0;"></div><span style="font-size:.74rem;color:rgba(255,255,255,.55);">Lymph nodes</span></div>
-          <div style="display:flex;align-items:center;gap:.6rem;"><div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;box-shadow:0 0 6px rgba(201,168,76,.8);flex-shrink:0;"></div><span style="font-size:.74rem;color:rgba(255,255,255,.55);">Lymph fluid</span></div>
-        </div>
-      </div>
-
-      <a href="#" onclick="openBooking();return false;" style="display:block;width:100%;max-width:360px;text-align:center;background:#c9a84c;color:#fff;text-decoration:none;padding:1rem;border-radius:3rem;font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 6px 20px rgba(201,168,76,.3);">Book a Session with Lisa →</a>
-    </div>
+    <a href="lymphatic-map.html" class="explorer-btn magnetic">Open 3D Explorer &rarr;</a>
   </div>
 </section>
-
-<script>
-(function(){
-  function init(){
-    var canvas = document.getElementById('lymph-canvas');
-    if(!canvas){ return; }
-    var container = document.getElementById('lymph-container');
-    var ctx = canvas.getContext('2d');
-
-    // Size canvas to container
-    var CW = container.offsetWidth || 320;
-    var CH = Math.round(CW * 1.9);
-    canvas.width = CW;
-    canvas.height = CH;
-
-    // All coords as fractions 0-1 of CW/CH
-    var cx = function(x){ return x * CW; };
-    var cy = function(y){ return y * CH; };
-
-    // ── BODY BOUNDARY CHECK (fractional coords) ──
-    function inBody(fx, fy){
-      var x = fx, y = fy;
-      // Head circle: center (0.5, 0.075), r=0.1
-      var hdx=x-0.5, hdy=y-0.075;
-      if(hdx*hdx+hdy*hdy < 0.01) return true;
-      // Neck: x 0.44-0.56, y 0.14-0.175
-      if(x>0.44&&x<0.56&&y>0.14&&y<0.175) return true;
-      // Torso: x 0.24-0.76, y 0.17-0.5
-      if(x>0.24&&x<0.76&&y>0.17&&y<0.5) return true;
-      // Left arm: tapers out
-      if(y>0.17&&y<0.48){
-        var prog=(y-0.17)/0.31;
-        if(x>0.12-prog*0.04&&x<0.25+prog*0.02) return true;
-      }
-      // Right arm
-      if(y>0.17&&y<0.48){
-        var prog=(y-0.17)/0.31;
-        if(x>0.75-prog*0.02&&x<0.88+prog*0.04) return true;
-      }
-      // Left leg: x 0.26-0.48, y 0.49-0.97
-      if(x>0.26&&x<0.48&&y>0.49&&y<0.97) return true;
-      // Right leg: x 0.52-0.74, y 0.49-0.97
-      if(x>0.52&&x<0.74&&y>0.49&&y<0.97) return true;
-      return false;
-    }
-
-    // ── LYMPH NODES (fractional coords) ──
-    var NODES = [
-      {x:0.50,y:0.042,r:0.013,area:'head'},   // adenoids
-      {x:0.44,y:0.088,r:0.012,area:'head'},   // tonsil L
-      {x:0.56,y:0.088,r:0.012,area:'head'},   // tonsil R
-      {x:0.41,y:0.118,r:0.014,area:'neck'},   // cervical L
-      {x:0.50,y:0.112,r:0.012,area:'neck'},   // cervical C
-      {x:0.59,y:0.118,r:0.014,area:'neck'},   // cervical R
-      {x:0.43,y:0.148,r:0.011,area:'neck'},   // cervical L2
-      {x:0.57,y:0.148,r:0.011,area:'neck'},   // cervical R2
-      {x:0.49,y:0.225,r:0.014,area:'chest'},  // thymus
-      {x:0.26,y:0.225,r:0.017,area:'arm'},    // axillary L
-      {x:0.74,y:0.225,r:0.017,area:'arm'},    // axillary R
-      {x:0.27,y:0.248,r:0.011,area:'arm'},    // axillary L2
-      {x:0.73,y:0.248,r:0.011,area:'arm'},    // axillary R2
-      {x:0.50,y:0.268,r:0.015,area:'chest'},  // thoracic jct
-      {x:0.61,y:0.348,r:0.016,area:'abdomen'},// spleen
-      {x:0.47,y:0.362,r:0.012,area:'abdomen'},// mesenteric
-      {x:0.53,y:0.395,r:0.013,area:'abdomen'},// mesenteric 2
-      {x:0.44,y:0.422,r:0.010,area:'abdomen'},// mesenteric 3
-      {x:0.57,y:0.422,r:0.010,area:'abdomen'},// mesenteric 4
-      {x:0.62,y:0.458,r:0.010,area:'abdomen'},// appendix area
-      {x:0.38,y:0.492,r:0.016,area:'leg'},    // inguinal L
-      {x:0.62,y:0.492,r:0.016,area:'leg'},    // inguinal R
-      {x:0.40,y:0.518,r:0.010,area:'leg'},    // inguinal L2
-      {x:0.60,y:0.518,r:0.010,area:'leg'},    // inguinal R2
-      {x:0.38,y:0.722,r:0.012,area:'leg'},    // popliteal L
-      {x:0.62,y:0.722,r:0.012,area:'leg'},    // popliteal R
-    ];
-
-    // ── VESSEL LINES ──
-    var VESSELS = [
-      // Thoracic duct (THICK)
-      {p:[[0.50,0.268],[0.50,0.248],[0.50,0.228],[0.50,0.198],[0.50,0.178],[0.498,0.158],[0.496,0.138]],thick:true},
-      // Right lymphatic duct (THICK)
-      {p:[[0.50,0.198],[0.54,0.195],[0.58,0.188],[0.62,0.178]],thick:true},
-      // HEAD vessels
-      {p:[[0.50,0.042],[0.48,0.025],[0.46,0.012]]},
-      {p:[[0.50,0.042],[0.52,0.025],[0.54,0.012]]},
-      {p:[[0.50,0.042],[0.50,0.018]]},
-      {p:[[0.44,0.088],[0.40,0.062],[0.36,0.038]]},
-      {p:[[0.56,0.088],[0.60,0.062],[0.64,0.038]]},
-      {p:[[0.44,0.088],[0.38,0.095],[0.32,0.098]]},
-      {p:[[0.56,0.088],[0.62,0.095],[0.68,0.098]]},
-      {p:[[0.41,0.118],[0.38,0.128],[0.34,0.132]]},
-      {p:[[0.59,0.118],[0.62,0.128],[0.66,0.132]]},
-      {p:[[0.41,0.118],[0.41,0.148],[0.43,0.178],[0.46,0.225]]},
-      {p:[[0.59,0.118],[0.59,0.148],[0.57,0.178],[0.54,0.225]]},
-      // CHEST vessels
-      {p:[[0.50,0.268],[0.42,0.272],[0.34,0.278],[0.27,0.282]]},
-      {p:[[0.50,0.268],[0.58,0.272],[0.66,0.278],[0.73,0.282]]},
-      {p:[[0.50,0.268],[0.46,0.298],[0.42,0.328],[0.38,0.355]]},
-      {p:[[0.50,0.268],[0.54,0.298],[0.58,0.328],[0.62,0.355]]},
-      // LEFT ARM vessels
-      {p:[[0.26,0.225],[0.21,0.218],[0.16,0.208],[0.12,0.195]]},
-      {p:[[0.26,0.225],[0.22,0.248],[0.18,0.272],[0.14,0.298],[0.10,0.325]]},
-      {p:[[0.26,0.225],[0.23,0.255],[0.20,0.285],[0.17,0.315],[0.14,0.345],[0.12,0.375]]},
-      {p:[[0.14,0.298],[0.11,0.325],[0.09,0.355],[0.07,0.385]]},
-      {p:[[0.12,0.375],[0.10,0.405],[0.08,0.435],[0.06,0.465]]},
-      // RIGHT ARM vessels
-      {p:[[0.74,0.225],[0.79,0.218],[0.84,0.208],[0.88,0.195]]},
-      {p:[[0.74,0.225],[0.78,0.248],[0.82,0.272],[0.86,0.298],[0.90,0.325]]},
-      {p:[[0.74,0.225],[0.77,0.255],[0.80,0.285],[0.83,0.315],[0.86,0.345],[0.88,0.375]]},
-      {p:[[0.86,0.298],[0.89,0.325],[0.91,0.355],[0.93,0.385]]},
-      {p:[[0.88,0.375],[0.90,0.405],[0.92,0.435],[0.94,0.465]]},
-      // ABDOMEN vessels
-      {p:[[0.50,0.268],[0.50,0.298],[0.50,0.328],[0.50,0.362],[0.50,0.395],[0.50,0.458]]},
-      {p:[[0.47,0.362],[0.42,0.375],[0.36,0.388],[0.30,0.398]]},
-      {p:[[0.53,0.395],[0.59,0.408],[0.65,0.418],[0.71,0.425]]},
-      {p:[[0.44,0.422],[0.38,0.438],[0.32,0.452],[0.28,0.462]]},
-      {p:[[0.57,0.422],[0.63,0.438],[0.68,0.452],[0.72,0.462]]},
-      // LEFT LEG vessels
-      {p:[[0.38,0.492],[0.36,0.528],[0.35,0.562],[0.35,0.598],[0.35,0.635],[0.35,0.672],[0.36,0.710],[0.38,0.722]]},
-      {p:[[0.38,0.492],[0.38,0.532],[0.38,0.572],[0.38,0.612],[0.38,0.652],[0.38,0.692],[0.38,0.732],[0.38,0.772],[0.37,0.812],[0.36,0.848],[0.35,0.882],[0.34,0.918],[0.34,0.955]]},
-      {p:[[0.40,0.518],[0.40,0.558],[0.40,0.598],[0.40,0.638],[0.40,0.678],[0.40,0.718],[0.40,0.758],[0.39,0.798],[0.38,0.835],[0.37,0.872],[0.36,0.908]]},
-      {p:[[0.38,0.722],[0.36,0.762],[0.35,0.802],[0.34,0.842],[0.33,0.882],[0.32,0.918],[0.31,0.952]]},
-      // RIGHT LEG vessels
-      {p:[[0.62,0.492],[0.64,0.528],[0.65,0.562],[0.65,0.598],[0.65,0.635],[0.65,0.672],[0.64,0.710],[0.62,0.722]]},
-      {p:[[0.62,0.492],[0.62,0.532],[0.62,0.572],[0.62,0.612],[0.62,0.652],[0.62,0.692],[0.62,0.732],[0.62,0.772],[0.63,0.812],[0.64,0.848],[0.65,0.882],[0.66,0.918],[0.66,0.955]]},
-      {p:[[0.60,0.518],[0.60,0.558],[0.60,0.598],[0.60,0.638],[0.60,0.678],[0.60,0.718],[0.60,0.758],[0.61,0.798],[0.62,0.835],[0.63,0.872],[0.64,0.908]]},
-      {p:[[0.62,0.722],[0.64,0.762],[0.65,0.802],[0.66,0.842],[0.67,0.882],[0.68,0.918],[0.69,0.952]]},
-    ];
-
-    var AREA_INFO = {
-      head:    {label:'Head & Scalp',    title:'Head & Scalp Drainage',       text:'Fine vessels cover the entire scalp and face, draining toward the cervical nodes. MLD here clears brain fog, relieves sinus pressure and reduces facial puffiness — often felt immediately.'},
-      neck:    {label:'Neck',            title:'Cervical Node Stimulation',   text:'Always opened first in a session. By clearing the cervical nodes, Lisa creates space for fluid from the whole head and face to drain freely downward into the chest.'},
-      arm:     {label:'Arms',            title:'Arm & Axillary Drainage',     text:'The axillary nodes drain the entire arm, shoulder and breast. Critical for post-mastectomy lymphedema — when nodes are removed, Lisa reroutes fluid via alternative pathways.'},
-      chest:   {label:'Chest',           title:'Thoracic Duct & Chest',       text:'The thoracic duct (bright central vessel) collects lymph from 75% of the body. The thymus develops immune cells here. MLD on the chest activates the whole lymphatic system.'},
-      abdomen: {label:'Abdomen',         title:'Abdominal & Gut Lymphatics',  text:'70% of the immune system surrounds the gut. Abdominal MLD stimulates the mesenteric nodes, reduces bloating, supports immunity and triggers the deepest relaxation response.'},
-      leg:     {label:'Legs',            title:'Lower Limb Lymphatic Flow',   text:'The inguinal and popliteal nodes drain the legs and feet. When congested after surgery or prolonged standing, fluid pools in the lower limbs. MLD manually reroutes it upward.'},
-    };
-
-    // ── PARTICLES ──
-    var N = 280;
-    var parts = [];
-    for(var i=0;i<N;i++){
-      var fx,fy,tries=0;
-      do{
-        fx=0.12+Math.random()*0.76;
-        fy=0.02+Math.random()*0.95;
-        tries++;
-      }while(!inBody(fx,fy)&&tries<30);
-      if(tries>=30){fx=0.5;fy=0.35;}
-      parts.push({fx:fx,fy:fy,hx:fx,hy:fy,vx:0,vy:0,r:0.008+Math.random()*0.009});
-    }
-
-    var nodeGlow = [];
-    for(var i=0;i<NODES.length;i++) nodeGlow.push(0);
-
-    var touchX=-1, touchY=-1, isTouching=false;
-    var lastArea=null, frame=0, hintShown=false;
-
-    function getPos(e,isTouch){
-      var r=canvas.getBoundingClientRect();
-      var src=isTouch?e.touches[0]:e;
-      return{x:(src.clientX-r.left)/r.width, y:(src.clientY-r.top)/r.height};
-    }
-
-    function handleContact(fx,fy){
-      touchX=fx; touchY=fy;
-      if(!hintShown){
-        hintShown=true;
-        var h=document.getElementById('lymph-hint');
-        if(h)h.style.opacity='0';
-      }
-      // Determine area
-      var area='abdomen';
-      if(fy<0.13) area='head';
-      else if(fy<0.19&&(fx<0.28||fx>0.72)) area='arm';
-      else if(fy<0.28) area='neck';
-      else if(fy<0.42) area='chest';
-      else if(fy<0.5) area='abdomen';
-      else area='leg';
-
-      if(area!==lastArea){
-        lastArea=area;
-        var info=AREA_INFO[area];
-        var el_l=document.getElementById('lymph-area-label');
-        var el_t=document.getElementById('lymph-info-title');
-        var el_p=document.getElementById('lymph-info-text');
-        if(el_l)el_l.textContent=info.label;
-        if(el_t)el_t.textContent=info.title;
-        if(el_p)el_p.textContent=info.text;
-      }
-    }
-
-    canvas.addEventListener('mousedown',function(e){isTouching=true;var p=getPos(e,false);handleContact(p.x,p.y);});
-    canvas.addEventListener('mousemove',function(e){if(!isTouching)return;var p=getPos(e,false);handleContact(p.x,p.y);});
-    canvas.addEventListener('mouseup',function(){isTouching=false;touchX=-1;touchY=-1;});
-    canvas.addEventListener('touchstart',function(e){e.preventDefault();isTouching=true;var p=getPos(e,true);handleContact(p.x,p.y);},{passive:false});
-    canvas.addEventListener('touchmove',function(e){e.preventDefault();if(!isTouching)return;var p=getPos(e,true);handleContact(p.x,p.y);},{passive:false});
-    canvas.addEventListener('touchend',function(){isTouching=false;touchX=-1;touchY=-1;});
-
-    // ── DRAW BODY ──
-    function drawBody(){
-      ctx.save();
-      ctx.fillStyle='#141c38';
-      ctx.strokeStyle='rgba(201,168,76,0.4)';
-      ctx.lineWidth=1.5;
-
-      function body(){
-        // Head
-        ctx.beginPath();
-        ctx.arc(cx(0.5),cy(0.075),cx(0.1),0,Math.PI*2);
-        ctx.fill();ctx.stroke();
-        // Neck
-        ctx.beginPath();
-        ctx.moveTo(cx(0.44),cy(0.14));ctx.lineTo(cx(0.56),cy(0.14));
-        ctx.lineTo(cx(0.56),cy(0.175));ctx.lineTo(cx(0.44),cy(0.175));ctx.closePath();
-        ctx.fill();ctx.stroke();
-        // Torso
-        ctx.beginPath();
-        ctx.moveTo(cx(0.29),cy(0.17));
-        ctx.bezierCurveTo(cx(0.24),cy(0.175),cx(0.23),cy(0.21),cx(0.23),cy(0.23));
-        ctx.lineTo(cx(0.23),cy(0.47));
-        ctx.bezierCurveTo(cx(0.23),cy(0.5),cx(0.27),cy(0.505),cx(0.31),cy(0.505));
-        ctx.lineTo(cx(0.69),cy(0.505));
-        ctx.bezierCurveTo(cx(0.73),cy(0.505),cx(0.77),cy(0.5),cx(0.77),cy(0.47));
-        ctx.lineTo(cx(0.77),cy(0.23));
-        ctx.bezierCurveTo(cx(0.77),cy(0.21),cx(0.76),cy(0.175),cx(0.71),cy(0.17));
-        ctx.closePath();ctx.fill();ctx.stroke();
-        // L arm
-        ctx.beginPath();
-        ctx.moveTo(cx(0.29),cy(0.175));
-        ctx.bezierCurveTo(cx(0.22),cy(0.178),cx(0.17),cy(0.205),cx(0.14),cy(0.235));
-        ctx.lineTo(cx(0.09),cy(0.455));
-        ctx.bezierCurveTo(cx(0.08),cy(0.472),cx(0.12),cy(0.478),cx(0.18),cy(0.478));
-        ctx.lineTo(cx(0.24),cy(0.478));
-        ctx.bezierCurveTo(cx(0.27),cy(0.478),cx(0.285),cy(0.47),cx(0.283),cy(0.455));
-        ctx.lineTo(cx(0.268),cy(0.22));
-        ctx.closePath();ctx.fill();ctx.stroke();
-        // R arm
-        ctx.beginPath();
-        ctx.moveTo(cx(0.71),cy(0.175));
-        ctx.bezierCurveTo(cx(0.78),cy(0.178),cx(0.83),cy(0.205),cx(0.86),cy(0.235));
-        ctx.lineTo(cx(0.91),cy(0.455));
-        ctx.bezierCurveTo(cx(0.92),cy(0.472),cx(0.88),cy(0.478),cx(0.82),cy(0.478));
-        ctx.lineTo(cx(0.76),cy(0.478));
-        ctx.bezierCurveTo(cx(0.73),cy(0.478),cx(0.715),cy(0.47),cx(0.717),cy(0.455));
-        ctx.lineTo(cx(0.732),cy(0.22));
-        ctx.closePath();ctx.fill();ctx.stroke();
-        // L leg
-        ctx.beginPath();
-        ctx.moveTo(cx(0.31),cy(0.505));
-        ctx.bezierCurveTo(cx(0.28),cy(0.53),cx(0.26),cy(0.565),cx(0.27),cy(0.62));
-        ctx.lineTo(cx(0.27),cy(0.892));
-        ctx.bezierCurveTo(cx(0.27),cy(0.908),cx(0.3),cy(0.915),cx(0.34),cy(0.915));
-        ctx.lineTo(cx(0.48),cy(0.915));
-        ctx.bezierCurveTo(cx(0.485),cy(0.915),cx(0.49),cy(0.908),cx(0.488),cy(0.892));
-        ctx.lineTo(cx(0.475),cy(0.62));
-        ctx.bezierCurveTo(cx(0.48),cy(0.565),cx(0.47),cy(0.53),cx(0.46),cy(0.505));
-        ctx.closePath();ctx.fill();ctx.stroke();
-        // R leg
-        ctx.beginPath();
-        ctx.moveTo(cx(0.54),cy(0.505));
-        ctx.bezierCurveTo(cx(0.53),cy(0.53),cx(0.52),cy(0.565),cx(0.525),cy(0.62));
-        ctx.lineTo(cx(0.512),cy(0.892));
-        ctx.bezierCurveTo(cx(0.51),cy(0.908),cx(0.515),cy(0.915),cx(0.52),cy(0.915));
-        ctx.lineTo(cx(0.66),cy(0.915));
-        ctx.bezierCurveTo(cx(0.70),cy(0.915),cx(0.73),cy(0.908),cx(0.73),cy(0.892));
-        ctx.lineTo(cx(0.73),cy(0.62));
-        ctx.bezierCurveTo(cx(0.74),cy(0.565),cx(0.72),cy(0.53),cx(0.69),cy(0.505));
-        ctx.closePath();ctx.fill();ctx.stroke();
-        // Collarbone detail
-        ctx.strokeStyle='rgba(201,168,76,0.18)';ctx.lineWidth=0.8;
-        ctx.beginPath();ctx.moveTo(cx(0.32),cy(0.175));ctx.quadraticCurveTo(cx(0.43),cy(0.188),cx(0.5),cy(0.185));ctx.quadraticCurveTo(cx(0.57),cy(0.188),cx(0.68),cy(0.175));ctx.stroke();
-        // Sternum
-        ctx.setLineDash([3,5]);
-        ctx.beginPath();ctx.moveTo(cx(0.5),cy(0.188));ctx.lineTo(cx(0.5),cy(0.495));ctx.stroke();
-        ctx.setLineDash([]);
-      }
-      body();
-      ctx.restore();
-    }
-
-    // ── DRAW VESSELS ──
-    function drawVessels(){
-      VESSELS.forEach(function(v){
-        var p=v.p;
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(cx(p[0][0]),cy(p[0][1]));
-        for(var i=1;i<p.length;i++){
-          if(i<p.length-1){
-            var mx=(p[i][0]+p[i+1][0])/2, my=(p[i][1]+p[i+1][1])/2;
-            ctx.quadraticCurveTo(cx(p[i][0]),cy(p[i][1]),cx(mx),cy(my));
-          } else {
-            ctx.lineTo(cx(p[i][0]),cy(p[i][1]));
-          }
-        }
-        if(v.thick){
-          ctx.strokeStyle='rgba(201,168,76,0.9)';
-          ctx.lineWidth=2.8;
-          ctx.shadowColor='rgba(201,168,76,0.7)';
-          ctx.shadowBlur=6;
-        } else {
-          ctx.strokeStyle='rgba(201,168,76,0.3)';
-          ctx.lineWidth=1.0;
-          ctx.shadowBlur=0;
-        }
-        ctx.stroke();
-        ctx.restore();
-      });
-    }
-
-    // ── DRAW NODES ──
-    function drawNodes(){
-      var t=frame*0.03;
-      NODES.forEach(function(node,i){
-        var x=cx(node.x), y=cy(node.y), r=node.r*CW;
-        var g=nodeGlow[i];
-        if(g>0)nodeGlow[i]=Math.max(0,g-0.016);
-        var pulse=Math.sin(t+i*0.72)*0.5+0.5;
-        ctx.save();
-        ctx.globalAlpha=0.12+pulse*0.1+g*0.35;
-        ctx.beginPath();ctx.arc(x,y,r*(2.2+pulse*0.5+g),0,Math.PI*2);
-        ctx.fillStyle='rgba(201,168,76,0.5)';ctx.fill();
-        ctx.restore();
-        ctx.save();
-        ctx.globalAlpha=0.92+g*0.08;
-        ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
-        ctx.fillStyle=g>0.3?'rgba(255,228,90,1)':'rgba(238,232,215,1)';
-        ctx.shadowColor='rgba(201,168,76,1)';
-        ctx.shadowBlur=g>0.3?14:5;
-        ctx.fill();
-        ctx.restore();
-      });
-    }
-
-    // ── UPDATE PARTICLES ──
-    var PR=0.15, PS=2.2, FRIC=0.86, HOME=0.005, NA=0.006;
-    function updateParts(){
-      parts.forEach(function(p){
-        // Push from touch
-        if(isTouching){
-          var dx=p.fx-touchX, dy=p.fy-touchY;
-          var d=Math.sqrt(dx*dx+dy*dy);
-          if(d<PR&&d>0.001){
-            var f=PS*(1-d/PR);
-            p.vx+=dx/d*f*0.01;
-            p.vy+=dy/d*f*0.01;
-          }
-        }
-        // Home
-        p.vx+=(p.hx-p.fx)*HOME;
-        p.vy+=(p.hy-p.fy)*HOME;
-        // Nearest node attraction
-        var bestD=9999,bestN=null;
-        NODES.forEach(function(node){
-          var dx=node.x-p.fx,dy=node.y-p.fy,d=Math.sqrt(dx*dx+dy*dy);
-          if(d<bestD){bestD=d;bestN=node;}
-        });
-        if(bestN&&bestD<0.12){
-          var dx=bestN.x-p.fx,dy=bestN.y-p.fy;
-          p.vx+=dx/bestD*NA;
-          p.vy+=dy/bestD*NA;
-          if(bestD<0.025){
-            var ni=NODES.indexOf(bestN);
-            if(ni>=0)nodeGlow[ni]=Math.min(1,nodeGlow[ni]+0.05);
-          }
-        }
-        p.vx*=FRIC; p.vy*=FRIC;
-        var nx=p.fx+p.vx, ny=p.fy+p.vy;
-        if(inBody(nx,ny)){p.fx=nx;p.fy=ny;}
-        else if(inBody(nx,p.fy)){p.fx=nx;p.vy*=-0.3;}
-        else if(inBody(p.fx,ny)){p.fy=ny;p.vx*=-0.3;}
-        else{p.vx*=-0.4;p.vy*=-0.4;}
-      });
-    }
-
-    function drawParts(){
-      parts.forEach(function(p){
-        ctx.save();
-        ctx.globalAlpha=0.4+Math.sin(frame*0.04+p.hx*8)*0.2;
-        ctx.beginPath();ctx.arc(cx(p.fx),cy(p.fy),p.r*CW,0,Math.PI*2);
-        ctx.fillStyle='rgba(201,168,76,1)';
-        ctx.shadowColor='rgba(201,168,76,0.8)';
-        ctx.shadowBlur=4;
-        ctx.fill();
-        ctx.restore();
-      });
-    }
-
-    // Ripple
-    var ripples=[];
-    function handleRipple(){
-      if(isTouching&&frame%6===0&&touchX>=0){
-        ripples.push({x:touchX,y:touchY,r:0.01,a:0.5});
-      }
-      ripples.forEach(function(r){r.r+=0.015;r.a-=0.04;});
-      ripples=ripples.filter(function(r){return r.a>0;});
-      ripples.forEach(function(r){
-        ctx.save();ctx.globalAlpha=r.a;
-        ctx.beginPath();ctx.arc(cx(r.x),cy(r.y),r.r*CW,0,Math.PI*2);
-        ctx.strokeStyle='rgba(201,168,76,0.9)';ctx.lineWidth=1.5;ctx.stroke();
-        ctx.restore();
-      });
-    }
-
-    function loop(){
-      ctx.clearRect(0,0,CW,CH);
-      ctx.fillStyle='#0d1028';ctx.fillRect(0,0,CW,CH);
-      drawBody();
-      drawVessels();
-      updateParts();
-      drawParts();
-      drawNodes();
-      handleRipple();
-      frame++;
-      requestAnimationFrame(loop);
-    }
-    loop();
-  }
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',function(){setTimeout(init,100);});
-  } else {
-    setTimeout(init,100);
-  }
-})();
-</script>
 
 <!-- TESTIMONIAL -->
 <div style="background:var(--dark);padding:4rem;">
@@ -1332,17 +845,6 @@ function resetQuiz(){
   document.getElementById('quiz-results').classList.remove('show');
 }
 
-/* ── BODY MAP ── */
-function showBMDetail(id){
-  document.querySelectorAll('.bodymap-detail').forEach(el=>el.classList.remove('active'));
-  document.querySelector('.bodymap-default').style.display='none';
-  document.getElementById(id).classList.add('active');
-}
-function hideBMDetail(){
-  document.querySelectorAll('.bodymap-detail').forEach(el=>el.classList.remove('active'));
-  document.querySelector('.bodymap-default').style.display='block';
-}
-
 /* ── MAGNETIC BUTTONS ── */
 document.querySelectorAll('.magnetic').forEach(el=>{
   el.addEventListener('mousemove',e=>{
@@ -1494,7 +996,7 @@ if(firstAcc)firstAcc.classList.add('open');
 
     <!-- BOTTOM ACTIONS -->
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding-top:.5rem;border-top:1px solid rgba(201,168,76,.15);margin-top:.5rem;">
-      <button onclick="closePricing();setTimeout(openBooking,200);" style="background:#c9a84c;color:#fff;border:none;padding:1rem 2.4rem;border-radius:3rem;font-family:'Jost',sans-serif;font-size:.84rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .3s;box-shadow:0 6px 20px rgba(201,168,76,.35);" onmouseenter="this.style.background='#d4b87a'" onmouseleave="this.style.background='#c9a84c'">Book a Session →</button>
+      <a href="index.html?book=1" style="display:inline-block;background:#c9a84c;color:#fff;text-decoration:none;padding:1rem 2.4rem;border-radius:3rem;font-family:'Jost',sans-serif;font-size:.84rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:all .3s;box-shadow:0 6px 20px rgba(201,168,76,.35);" onmouseenter="this.style.background='#d4b87a'" onmouseleave="this.style.background='#c9a84c'">Book a Session →</a>
       <a href="tel:07979215811" style="color:#2e2b24;padding:1rem 2.4rem;border-radius:3rem;text-decoration:none;font-family:'Jost',sans-serif;font-size:.84rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid rgba(201,168,76,.35);transition:all .3s;" onmouseenter="this.style.borderColor='#c9a84c';this.style.background='rgba(201,168,76,.06)'" onmouseleave="this.style.borderColor='rgba(201,168,76,.35)';this.style.background=''">📞 Call Lisa</a>
     </div>
 
