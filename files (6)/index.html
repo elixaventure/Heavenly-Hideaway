@@ -31,6 +31,21 @@ body {
   overflow-x: hidden;
 }
 
+/* ── ELEGANT CURSOR ── */
+@media (hover:hover) and (pointer:fine){
+  body{cursor:none;}
+  a,button,label,select,[onclick],[role="button"]{cursor:none;}
+  input,textarea{cursor:text;}
+  #cur-dot,#cur-ring{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;will-change:transform,width,height;}
+  #cur-dot{width:6px;height:6px;background:var(--gold);box-shadow:0 0 10px rgba(201,168,76,.55);z-index:9999;transition:width .22s ease,height .22s ease,opacity .22s ease,background .22s ease;}
+  #cur-ring{width:32px;height:32px;border:1.2px solid rgba(201,168,76,.5);background:transparent;z-index:9998;transition:width .32s cubic-bezier(.22,.61,.36,1),height .32s cubic-bezier(.22,.61,.36,1),border-color .25s ease,background .25s ease,opacity .25s ease;}
+  body.cur-hover #cur-dot{width:0;height:0;opacity:0;}
+  body.cur-hover #cur-ring{width:54px;height:54px;border-color:rgba(201,168,76,.85);background:rgba(201,168,76,.07);}
+  body.cur-down #cur-ring{width:22px;height:22px;border-color:rgba(201,168,76,1);}
+  body.cur-hidden #cur-dot,body.cur-hidden #cur-ring{opacity:0;}
+}
+@media (hover:none),(pointer:coarse){#cur-dot,#cur-ring{display:none;}}
+
 /* ── NAV ── */
 nav {
   position: fixed;
@@ -1430,6 +1445,9 @@ html, body { max-width: 100%; overflow-x: hidden; }
 </head>
 <body>
 
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
 <!-- NAV -->
 <nav id="topnav">
   <a href="#" class="nav-logo">
@@ -2420,6 +2438,30 @@ A 50% deposit should be requested to secure the booking.
 if(window.location.search.includes('book=1')){
   window.addEventListener('load',()=>setTimeout(openBooking,500));
 }
+
+/* ── ELEGANT CURSOR ── */
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const dot=document.getElementById('cur-dot'), ring=document.getElementById('cur-ring');
+  if(!dot||!ring) return;
+  let mx=innerWidth/2, my=innerHeight/2, rx=mx, ry=my;
+  addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  },{passive:true});
+  (function loop(){
+    rx+=(mx-rx)*0.18; ry+=(my-ry)*0.18;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  const hoverSel='a,button,label,select,[onclick],[role="button"],.magnetic,.treat-card,.cal-cell.weekend-day,.time-btn,.nav-logo,.bk-close,.cal-nav-btn,.bk-btn-back,.bk-btn-next,.pill,.btn-gold,.btn-outline,.btn-cta,.btn-cta-sec';
+  document.addEventListener('mouseover',e=>{ if(e.target.closest&&e.target.closest(hoverSel)) document.body.classList.add('cur-hover'); });
+  document.addEventListener('mouseout', e=>{ if(e.target.closest&&e.target.closest(hoverSel)) document.body.classList.remove('cur-hover'); });
+  document.addEventListener('mousedown',()=>document.body.classList.add('cur-down'));
+  document.addEventListener('mouseup',  ()=>document.body.classList.remove('cur-down'));
+  document.documentElement.addEventListener('mouseleave',()=>document.body.classList.add('cur-hidden'));
+  document.documentElement.addEventListener('mouseenter',()=>document.body.classList.remove('cur-hidden'));
+})();
 </script>
 
 </body>

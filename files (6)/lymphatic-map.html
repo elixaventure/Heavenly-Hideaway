@@ -10,6 +10,20 @@
 html,body{height:100%;background:#0b0f22;font-family:"Jost",sans-serif;overflow:hidden;color:#fff;}
 .app{display:flex;flex-direction:column;height:100vh;}
 
+/* ── ELEGANT CURSOR ── */
+@media (hover:hover) and (pointer:fine){
+  body{cursor:none;}
+  a,button,label,select,[onclick],[role="button"]{cursor:none;}
+  #cur-dot,#cur-ring{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;will-change:transform,width,height;}
+  #cur-dot{width:6px;height:6px;background:#c9a84c;box-shadow:0 0 10px rgba(201,168,76,.6);z-index:9999;transition:width .22s ease,height .22s ease,opacity .22s ease,background .22s ease;}
+  #cur-ring{width:32px;height:32px;border:1.2px solid rgba(201,168,76,.6);background:transparent;z-index:9998;transition:width .32s cubic-bezier(.22,.61,.36,1),height .32s cubic-bezier(.22,.61,.36,1),border-color .25s ease,background .25s ease,opacity .25s ease;}
+  body.cur-hover #cur-dot{width:0;height:0;opacity:0;}
+  body.cur-hover #cur-ring{width:54px;height:54px;border-color:rgba(201,168,76,.9);background:rgba(201,168,76,.1);}
+  body.cur-down #cur-ring{width:22px;height:22px;border-color:rgba(201,168,76,1);}
+  body.cur-hidden #cur-dot,body.cur-hidden #cur-ring{opacity:0;}
+}
+@media (hover:none),(pointer:coarse){#cur-dot,#cur-ring{display:none;}}
+
 /* TOP BAR */
 .bar{
   display:flex;align-items:center;justify-content:space-between;
@@ -160,6 +174,8 @@ html,body{height:100%;background:#0b0f22;font-family:"Jost",sans-serif;overflow:
 </style>
 </head>
 <body>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 <div class="app">
 
   <!-- TOP BAR -->
@@ -256,6 +272,36 @@ document.querySelector(".btn-book").addEventListener("click", function(e){
   sessionStorage.setItem("openBooking","1");
   window.location.href = "index.html";
 });
+
+/* ── ELEGANT CURSOR ── */
+(function(){
+  if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const dot=document.getElementById('cur-dot'), ring=document.getElementById('cur-ring');
+  if(!dot||!ring) return;
+  let mx=innerWidth/2, my=innerHeight/2, rx=mx, ry=my;
+  addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  },{passive:true});
+  (function loop(){
+    rx+=(mx-rx)*0.18; ry+=(my-ry)*0.18;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+  const hoverSel='a,button,label,select,[onclick],[role="button"]';
+  document.addEventListener('mouseover',e=>{ if(e.target.closest&&e.target.closest(hoverSel)) document.body.classList.add('cur-hover'); });
+  document.addEventListener('mouseout', e=>{ if(e.target.closest&&e.target.closest(hoverSel)) document.body.classList.remove('cur-hover'); });
+  document.addEventListener('mousedown',()=>document.body.classList.add('cur-down'));
+  document.addEventListener('mouseup',  ()=>document.body.classList.remove('cur-down'));
+  document.documentElement.addEventListener('mouseleave',()=>document.body.classList.add('cur-hidden'));
+  document.documentElement.addEventListener('mouseenter',()=>document.body.classList.remove('cur-hidden'));
+  // Hide over Sketchfab iframe so it doesn't clash with the model's own cursor
+  const iframe=document.getElementById('sf-frame');
+  if(iframe){
+    iframe.addEventListener('mouseenter',()=>document.body.classList.add('cur-hidden'));
+    iframe.addEventListener('mouseleave',()=>document.body.classList.remove('cur-hidden'));
+  }
+})();
 </script>
 </body>
 </html>
