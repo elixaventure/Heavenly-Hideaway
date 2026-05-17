@@ -165,12 +165,43 @@ html,body{height:100%;background:#0b0f22;font-family:"Jost",sans-serif;overflow:
   text-transform:uppercase;font-weight:500;
 }
 
+/* ── MOBILE MENU ── */
+.nav-burger{display:none;width:40px;height:40px;border:none;background:transparent;cursor:pointer;align-items:center;justify-content:center;padding:0;position:relative;z-index:1100;}
+.nav-burger span{position:absolute;left:10px;width:20px;height:1.5px;background:#c9a84c;border-radius:2px;transition:transform .3s ease,opacity .25s ease,top .3s ease;}
+.nav-burger span:nth-child(1){top:13px;}
+.nav-burger span:nth-child(2){top:19.5px;}
+.nav-burger span:nth-child(3){top:26px;}
+body.menu-open .nav-burger span:nth-child(1){top:19.5px;transform:rotate(45deg);}
+body.menu-open .nav-burger span:nth-child(2){opacity:0;}
+body.menu-open .nav-burger span:nth-child(3){top:19.5px;transform:rotate(-45deg);}
+#mobile-menu{position:fixed;inset:0;background:linear-gradient(150deg,#0b0f22 0%,#1a1f3a 100%);z-index:1000;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:5rem 2rem 3rem;transform:translateY(-100%);transition:transform .55s cubic-bezier(.22,.61,.36,1);opacity:0;pointer-events:none;}
+body.menu-open #mobile-menu{transform:translateY(0);opacity:1;pointer-events:auto;}
+.mm-list{list-style:none;display:flex;flex-direction:column;gap:.3rem;text-align:center;width:100%;max-width:360px;margin:0;padding:0;}
+.mm-list li{opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s ease;}
+body.menu-open .mm-list li{opacity:1;transform:translateY(0);}
+body.menu-open .mm-list li:nth-child(1){transition-delay:.15s;}
+body.menu-open .mm-list li:nth-child(2){transition-delay:.20s;}
+body.menu-open .mm-list li:nth-child(3){transition-delay:.25s;}
+body.menu-open .mm-list li:nth-child(4){transition-delay:.30s;}
+body.menu-open .mm-list li:nth-child(5){transition-delay:.35s;}
+body.menu-open .mm-list li:nth-child(6){transition-delay:.40s;}
+body.menu-open .mm-list li:nth-child(7){transition-delay:.45s;}
+.mm-list a{display:block;padding:.85rem 0;font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.85);text-decoration:none;letter-spacing:.01em;}
+.mm-list a:hover,.mm-list a.nav-current{color:#c9a84c;}
+.mm-divider{width:40px;height:1px;background:rgba(201,168,76,.4);margin:1.5rem auto;}
+.mm-call{display:inline-flex;align-items:center;gap:.6rem;background:#c9a84c;color:#fff;text-decoration:none;padding:1rem 2.2rem;border-radius:3rem;font-family:'Jost',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 8px 24px rgba(201,168,76,.4);}
+.mm-foot{margin-top:2.2rem;font-family:'Jost',sans-serif;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);}
+body.menu-open{overflow:hidden;}
+
 /* MOBILE */
 @media(max-width:540px){
   .bar-title{display:none;}
+  .btn-back{display:none;}
+  .nav-burger{display:flex;}
   .strip-item:nth-child(n+4){display:none;}
   .foot-right{display:none;}
 }
+@media (min-width: 541px){#mobile-menu{display:none;}}
 </style>
 </head>
 <body>
@@ -187,7 +218,26 @@ html,body{height:100%;background:#0b0f22;font-family:"Jost",sans-serif;overflow:
     <div class="bar-right">
       <a href="index.html" class="btn-back">&#8592; Back</a>
       <a href="index.html?book=1" class="btn-book">Book a Session</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+    <ul class="mm-list">
+      <li><a href="index.html#about" data-mm>About Lisa</a></li>
+      <li><a href="benefits.html" data-mm>Treatment Guide</a></li>
+      <li><a href="lymphatic-map.html" class="nav-current" data-mm>3D Explorer</a></li>
+      <li><a href="index.html#benefits" data-mm>Benefits</a></li>
+      <li><a href="index.html#conditions" data-mm>Conditions</a></li>
+      <li><a href="index.html#pricing" data-mm>Pricing</a></li>
+      <li><a href="index.html?book=1" data-mm>Book a Session</a></li>
+    </ul>
+    <div class="mm-divider"></div>
+    <a href="tel:07979215811" class="mm-call" data-mm>📞 Call Lisa &middot; 07979 215811</a>
+    <div class="mm-foot">Heavenly Hideaway &middot; Cheshire</div>
   </div>
 
   <!-- INSTRUCTION STRIP -->
@@ -273,6 +323,25 @@ document.querySelector(".btn-book").addEventListener("click", function(e){
   window.location.href = "index.html";
 });
 
+/* ── MOBILE MENU ── */
+function closeMobileMenu(){
+  document.body.classList.remove('menu-open');
+  var b=document.getElementById('nav-burger');
+  if(b)b.setAttribute('aria-expanded','false');
+}
+(function(){
+  var burger=document.getElementById('nav-burger');
+  if(!burger) return;
+  burger.addEventListener('click',function(){
+    var open=document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });
+  document.querySelectorAll('#mobile-menu a[data-mm]').forEach(function(a){
+    a.addEventListener('click',function(){setTimeout(closeMobileMenu,80);});
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&document.body.classList.contains('menu-open')) closeMobileMenu();
+  });
 /* ── ELEGANT CURSOR ── */
 (function(){
   if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
