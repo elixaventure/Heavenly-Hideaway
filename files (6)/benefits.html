@@ -189,6 +189,26 @@ canvas#particles{position:absolute;inset:0;pointer-events:none;}
 .explorer-btn{background:var(--gold);color:#fff;text-decoration:none;padding:1.05rem 2.2rem;border-radius:3rem;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;box-shadow:0 8px 24px rgba(201,168,76,.4);transition:all .3s;}
 .explorer-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
 
+/* ── TESTIMONIAL ── */
+.testimonial-block{background:var(--dark);padding:5rem 2rem;}
+.testimonial-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center;}
+.testimonial-profile{text-align:center;flex-shrink:0;}
+.testimonial-avatar{width:80px;height:80px;background:rgba(201,168,76,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem;}
+.testimonial-name{color:#fff;font-size:.9rem;font-weight:500;}
+.testimonial-role{color:rgba(255,255,255,.45);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.35rem;}
+.testimonial-stars{color:var(--gold);font-size:.74rem;margin-top:.55rem;letter-spacing:.14em;}
+.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,1.6vw,1.45rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.88);line-height:1.7;margin-bottom:1.2rem;}
+.testimonial-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);padding:.4rem 1rem;border-radius:2rem;}
+.testimonial-badge span{font-size:.62rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-weight:500;}
+
+@media (max-width:720px){
+  .testimonial-block{padding:3.5rem 1.5rem;}
+  .testimonial-inner{grid-template-columns:1fr;gap:2rem;text-align:center;max-width:560px;}
+  .testimonial-quote-wrap{text-align:center;}
+  .testimonial-quote{font-size:1.1rem;line-height:1.65;}
+  .testimonial-avatar{width:68px;height:68px;font-size:1.7rem;}
+}
+
 /* ── TESTIMONIAL TICKER ── */
 .ticker-section{background:var(--dark);padding:2.5rem 0;overflow:hidden;}
 .ticker-track{display:flex;gap:4rem;animation:ticker 30s linear infinite;white-space:nowrap;}
@@ -410,22 +430,20 @@ footer span{color:var(--gold);}
 </section>
 
 <!-- TESTIMONIAL -->
-<div style="background:var(--dark);padding:4rem;">
-  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center;">
-    <div style="text-align:center;flex-shrink:0;">
-      <div style="width:80px;height:80px;background:rgba(201,168,76,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem;">👤</div>
-      <div style="color:#fff;font-size:.84rem;font-weight:500;">Joshua</div>
-      <div style="color:rgba(255,255,255,.4);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;">Post-Surgery Client</div>
-      <div style="color:var(--gold);font-size:.7rem;margin-top:.5rem;letter-spacing:.1em;">★★★★★</div>
+<section class="testimonial-block">
+  <div class="testimonial-inner">
+    <div class="testimonial-profile">
+      <div class="testimonial-avatar">👤</div>
+      <div class="testimonial-name">Joshua</div>
+      <div class="testimonial-role">Post-Surgery Client</div>
+      <div class="testimonial-stars">★★★★★</div>
     </div>
-    <div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2vw,1.6rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:1rem;">"I had lymphatic drainage with Lisa following hand surgery and honestly the results took me by surprise. The swelling went down noticeably after my first session and the recovery felt so much smoother than I expected. Lisa made me feel completely at ease, explained everything clearly, and genuinely cared about how I was doing. I wouldn't hesitate to recommend her to anyone recovering from surgery."</p>
-      <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);padding:.35rem .9rem;border-radius:2rem;">
-        <span style="font-size:.62rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-weight:500;">✓ Verified Client · Post-Surgery Recovery</span>
-      </div>
+    <div class="testimonial-quote-wrap">
+      <p class="testimonial-quote">"I had lymphatic drainage with Lisa following hand surgery and honestly the results took me by surprise. The swelling went down noticeably after my first session and the recovery felt so much smoother than I expected. Lisa made me feel completely at ease, explained everything clearly, and genuinely cared about how I was doing. I wouldn't hesitate to recommend her to anyone recovering from surgery."</p>
+      <div class="testimonial-badge"><span>✓ Verified Client · Post-Surgery Recovery</span></div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ACCORDION BENEFITS -->
 <section class="acc-section">
