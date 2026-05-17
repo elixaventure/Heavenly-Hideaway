@@ -62,9 +62,10 @@ body.cur-hover #cur-ring {
 /* ── NAV ── */
 nav{position:fixed;top:0;width:100%;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.6rem 4rem;background:rgba(255,253,247,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.15);transition:box-shadow .3s;}
 .nav-logo img{height:60px;width:auto;display:block;}
-.nav-links{display:flex;list-style:none;gap:2.5rem;align-items:center;}
-.nav-links a{text-decoration:none;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;color:var(--muted);transition:color .2s;}
+.nav-links{display:flex;list-style:none;gap:1.8rem;align-items:center;}
+.nav-links a{text-decoration:none;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;color:var(--muted);transition:color .2s;}
 .nav-links a:hover{color:var(--gold);}
+.nav-links a.nav-current{color:var(--gold);font-weight:500;}
 .nav-book{background:var(--gold)!important;color:#fff!important;padding:.5rem 1.5rem;border-radius:2rem;font-weight:500!important;}
 
 /* ── FLOATING BOOK BUTTON ── */
@@ -263,9 +264,13 @@ footer span{color:var(--gold);}
   </a>
   <ul class="nav-links">
     <li><a href="index.html#about">About Lisa</a></li>
+    <li><a href="benefits.html" class="nav-current">Treatment Guide</a></li>
+    <li><a href="lymphatic-map.html">3D Explorer</a></li>
+    <li><a href="index.html#benefits">Benefits</a></li>
+    <li><a href="index.html#conditions">Conditions</a></li>
     <li><a href="#" onclick="openPricing();return false;">Pricing</a></li>
     <li><a href="index.html?book=1">Book</a></li>
-    <li><a href="index.html#contact" class="nav-book">Call Lisa</a></li>
+    <li><a href="tel:07979215811" class="nav-book">Call Lisa</a></li>
   </ul>
 </nav>
 
